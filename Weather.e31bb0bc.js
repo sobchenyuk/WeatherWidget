@@ -120,12 +120,21 @@ var setTimeParameter = {
   time: time,
   day: day,
   date: date,
+  watchNumbers: function watchNumbers(number) {
+    var result = number;
+
+    if (number < 10) {
+      result = "0".concat(number);
+    }
+
+    return result;
+  },
   setTime: function setTime() {
     var _this = this;
 
     setInterval(function () {
       var date = new Date();
-      _this.time.innerHTML = "".concat(date.getHours(), ":").concat(date.getMinutes(), ":").concat(date.getSeconds());
+      _this.time.innerHTML = "".concat(date.getHours(), ":").concat(_this.watchNumbers(date.getMinutes()), ":").concat(_this.watchNumbers(date.getSeconds()));
     }, 1000);
   },
   dayNow: function dayNow(num) {
@@ -19146,7 +19155,6 @@ var templateWeather = function templateWeather() {
 
   _axios.default.get('//api.apixu.com/v1/current.json?key=ed951695db6d4781a52104049182311&q=Kharkiv&lang=uk').then(function (response) {
     // handle success
-    console.log(response.data);
     var current = response.data.current;
     var feelslike_c = current.feelslike_c,
         temp_c = current.temp_c,
@@ -19175,9 +19183,13 @@ var _TemplateWeather = _interopRequireDefault(require("./app/TemplateWeather"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var waitTime = 30 * 60 * 1000;
 window.addEventListener('load', function (e) {
   _Date.setTimeParameter;
   (0, _TemplateWeather.default)();
+  setTimeout(function () {
+    (0, _TemplateWeather.default)();
+  }, waitTime);
 });
 },{"./app/Date":"app/Date.js","./app/TemplateWeather":"app/TemplateWeather.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -19206,7 +19218,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50146" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62392" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
