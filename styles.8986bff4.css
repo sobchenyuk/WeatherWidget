@@ -9,3 +9,19 @@ html, body, .container, .row {
 .m-auto {
   margin: auto;
 }
+
+.row {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .mobile-text-center {
+    text-align: center;
+  }
+  .mobile-block {
+    display: block;
+  }
+  .mobile-j-c-center {
+    justify-content: center;
+  }
+}

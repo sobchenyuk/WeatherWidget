@@ -19149,12 +19149,12 @@ var templateWeather = function templateWeather() {
   var t = document.querySelector('.text');
   var i = document.querySelector('.icon');
   var temp = document.querySelector('.temp');
-  var precipitation = document.querySelector('.precipitation');
   var feel = document.querySelector('.feel');
   var h = document.querySelector('.humidity');
 
   _axios.default.get('//api.apixu.com/v1/current.json?key=ed951695db6d4781a52104049182311&q=Kharkiv&lang=uk').then(function (response) {
     // handle success
+    console.log(response.data.current);
     var current = response.data.current;
     var feelslike_c = current.feelslike_c,
         temp_c = current.temp_c,
@@ -19166,7 +19166,6 @@ var templateWeather = function templateWeather() {
     t.innerHTML = text;
     i.src = icon;
     temp.innerHTML = temp_c;
-    precipitation.innerHTML = precip_in;
     feel.innerHTML = feelslike_c;
     h.innerHTML = humidity;
   });
@@ -19218,7 +19217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64684" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58203" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
