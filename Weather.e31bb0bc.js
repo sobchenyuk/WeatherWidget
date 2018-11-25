@@ -19196,16 +19196,21 @@ var loader = function loader() {
 window.addEventListener('load', function (e) {
   _Date.default;
   (0, _TemplateWeather.default)();
+  var upgrade = document.querySelector('#upgrade');
   setInterval(function () {
     var date = new Date();
 
     if (date.getMinutes() === 30 || date.getMinutes() === 0) {
       if (date.getSeconds() === 0) {
-        (0, _TemplateWeather.default)();
         loader();
+        (0, _TemplateWeather.default)();
       }
     }
   }, 1000);
+  upgrade.addEventListener('click', function () {
+    loader();
+    (0, _TemplateWeather.default)();
+  });
 });
 },{"./app/Date":"app/Date.js","./app/TemplateWeather":"app/TemplateWeather.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -19234,7 +19239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57447" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62753" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

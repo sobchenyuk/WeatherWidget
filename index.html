@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Title</title>
-
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -16,7 +17,10 @@
 <div class="container">
 	<div class="row is-flex">
 		<div class="col s12 m8 xl5 m-auto">
-			<div class="card blue lighten-5">
+			<div class="grey lighten-3 app-title">
+					Обновляется каждые 30 минут
+			</div>
+			<div class="card blue lighten-5 hoverable">
 				<div class="loader" style="display: none">
 					<div id="floatingBarsG">
 						<div class="blockG" id="rotateG_01"></div>
@@ -65,6 +69,11 @@
 						</div>
 					</div>
 				</div>
+
+				<a id="upgrade" class="btn green">
+					<i class="material-icons right">cloud</i>
+					Обновить
+				</a>
 		</div>
 	</div>
 </div>
