@@ -19197,6 +19197,7 @@ window.addEventListener('load', function (e) {
   _Date.default;
   (0, _TemplateWeather.default)();
   var upgrade = document.querySelector('#upgrade');
+  var count = 0;
   setInterval(function () {
     var date = new Date();
 
@@ -19206,8 +19207,17 @@ window.addEventListener('load', function (e) {
         (0, _TemplateWeather.default)();
       }
     }
+
+    if (count === 3) {
+      upgrade.setAttribute('disabled', 'disabled');
+      setTimeout(function () {
+        count = 0;
+        upgrade.removeAttribute('disabled');
+      }, 100000);
+    }
   }, 1000);
-  upgrade.addEventListener('click', function () {
+  upgrade.addEventListener('click', function (e) {
+    count++;
     loader();
     (0, _TemplateWeather.default)();
   });
@@ -19239,7 +19249,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62753" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51278" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
