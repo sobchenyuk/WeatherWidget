@@ -19154,7 +19154,6 @@ var templateWeather = function templateWeather() {
 
   _axios.default.get('//api.apixu.com/v1/current.json?key=ed951695db6d4781a52104049182311&q=Kharkiv&lang=uk').then(function (response) {
     // handle success
-    console.log(response.data.current);
     var current = response.data.current;
     var feelslike_c = current.feelslike_c,
         temp_c = current.temp_c,
@@ -19176,18 +19175,36 @@ exports.default = _default;
 },{"axios":"node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
-var _Date = require("./app/Date");
+var _Date = _interopRequireDefault(require("./app/Date"));
 
 var _TemplateWeather = _interopRequireDefault(require("./app/TemplateWeather"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var loader = function loader() {
+  var timer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
+  var loader = document.querySelector('.loader');
+  var content = document.querySelector('.card-content');
+  loader.style.display = 'block';
+  content.style.opacity = '0';
+  setTimeout(function () {
+    loader.style.display = 'none';
+    content.style.opacity = '1';
+  }, timer);
+};
+
 window.addEventListener('load', function (e) {
-  _Date.setTimeParameter;
+  _Date.default;
   (0, _TemplateWeather.default)();
   setInterval(function () {
     var date = new Date();
-    date.getMinutes() === 30 || date.getMinutes() === 0 ? (0, _TemplateWeather.default)() : null;
+
+    if (date.getMinutes() === 30 || date.getMinutes() === 0) {
+      if (date.getSeconds() === 0) {
+        (0, _TemplateWeather.default)();
+        loader();
+      }
+    }
   }, 1000);
 });
 },{"./app/Date":"app/Date.js","./app/TemplateWeather":"app/TemplateWeather.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -19217,7 +19234,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58203" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57447" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
