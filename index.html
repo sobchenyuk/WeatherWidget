@@ -1,27 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru-RU">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>WeatherWidget</title>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Погода в областных городах Украины</title>
 
-	<link rel="stylesheet" href="styles.8986bff4.css">
-<script src="styles.8986bff4.js"></script></head>
+	<meta name="description" content="Погода в областных городах Украины">
+	<meta name="keywords" content="Погода в Винница, Погода в Днепр, Погода в Донецк, Погода в Житомир,
+	 Погода в Запорожье, Погода в Ивано-Франковск, Погода в Киев, Погода в Кропивницкий, Погода в Луганск, Погода в Луцк, Погода в Львов, Погода в Николаев,
+				Погода в Одесса, Погода в Полтава, Погода в Ровно, Погода в Сумы, Погода в Тернополь, Погода в Ужгород,
+				 Погода в Харьков, Погода в Херсон, Погода в Хмельницкий, Погода в Черкассы, Погода в Черновцы">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="/styles.8986bff4.css">
+<script src="/styles.8986bff4.js"></script></head>
 <body>
 
-<div class="container">
+<div class="weatherWidget container">
+
 	<div class="row is-flex">
+
 		<div class="col s12 m8 xl5 m-auto">
-			<div class="grey lighten-3 app-title">
-					Обновляется каждые 30 минут
+
+			<header class="weatherWidget__header">
+				<h1 class="title">Погода в облостях</h1>
+			</header>
+
+			<div class="weatherWidget__change-city">
+				<div class="row">
+					<div class="input-field col s12">
+						<select class="js-select">
+							<option value="Kharkiv">Город Харьков</option>
+						</select>
+						<label>Выберете облосной город</label>
+					</div>
+				</div>
 			</div>
+
+			<div class="progress">
+				<div class="determinate weatherWidget__progress" style="width: 0"></div>
+			</div>
+
 			<div class="card blue lighten-5 hoverable">
-				<div class="loader" style="display: none">
+
+				<div class="weatherWidget__loader fadein">
 					<div id="floatingBarsG">
 						<div class="blockG" id="rotateG_01"></div>
 						<div class="blockG" id="rotateG_02"></div>
@@ -34,20 +61,29 @@
 					</div>
 				</div>
 
-				<div class="card-content mobile-text-center" style="opacity: 1">
+				<div class="weatherWidget__content card-content mobile-text-center">
+
 					<span class="card-title">Погода в Харькове</span>
+
 					<p>
 						<span class="Day">День недели</span>
 						<br>
-						<span class="text"></span> | <time>00:00:00 pm|am</time>
+						<span class="text"></span> |
+						<time>00:00:00 pm|am</time>
 					</p>
+
 					<br>
+
 					<div class="row">
+
 						<div class="col s12 m6">
+
 							<div class="row valign-wrapper mobile-text-center mobile-block">
+
 								<div class="col s12 m6">
 									<img class="circle responsive-img icon">
 								</div>
+
 								<div class="col s12 m6">
 
 									<div class="row">
@@ -61,24 +97,70 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="col s12 m6">
 							<ul class="mobile-text-center">
 								<li>Чувствуеться: <span class="feel">0</span> °C</li>
-								<li>Влажность:  <span class="humidity">0</span>%</li>
+								<li>Влажность: <span class="humidity">0</span>%</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<button id="upgrade" class="btn green">
-					<i class="material-icons right">cloud</i>
-					Обновить
-				</button>
+			</div>
+
+			<div class="weatherWidget__list-city">
+				<strong>Погода в Винница, Погода в Днепр, Погода в Донецк, Погода в Житомир,
+					Погода в Запорожье, Погода в Ивано-Франковск, Погода в Киев, Погода в Кропивницкий, Погода в
+					Луганск, Погода в Луцк, Погода в Львов, Погода в Николаев,
+					Погода в Одесса, Погода в Полтава, Погода в Ровно, Погода в Сумы, Погода в Тернополь, Погода в
+					Ужгород,
+					Погода в Харьков, Погода в Херсон, Погода в Хмельницкий, Погода в Черкассы, Погода в
+					Черновцы</strong>
+			</div>
+
+			<footer class="weatherWidget__footer page-footer lighten-5 hoverable">
+
+				<ul class="weatherWidget__footer-social">
+						<li class="footer-social__item">
+							<a href="https://www.facebook.com/andreysobchenyuk" target="_blank" rel="nofollow noreferrer noopener" class="grey-text text-lighten-3"><i class="fab fa-facebook-square"></i></a>
+						</li>
+						<li class="footer-social__item">
+							<a href="https://www.linkedin.com/in/sobchenyuk-andrey/" target="_blank" rel="nofollow noreferrer noopener" class="grey-text text-lighten-3">
+								<i class="fab fa-linkedin"></i></a></li>
+						<li class="footer-social__item">
+							<a href="skype:sobchenyuk?chat" target="_blank" rel="nofollow noreferrer noopener" class="grey-text text-lighten-3"><i class="fab fa-skype"></i></a>
+						</li>
+						<li class="footer-social__item">
+							<a href="https://t.me/andrey_sobchenyuk" target="_blank" rel="nofollow noreferrer noopener" class="grey-text text-lighten-3"><i class="fab fa-telegram"></i></a>
+						</li>
+						<li class="footer-social__item">
+							<a href="https://wa.me/380669353050" target="_blank" rel="nofollow noreferrer noopener" class="grey-text text-lighten-3"><i class="fab fa-whatsapp-square"></i></a>
+						</li>
+						<li class="footer-social__item">
+							<a href="viber://chat?number=380669353050" target="_blank" rel="nofollow noreferrer noopener" class="grey-text text-lighten-3"><i class="fab fa-viber"></i></a>
+						</li>
+					</ul>
+
+				<div class="footer-copyright">
+					<div class="container">
+						© 2010 Web Studio "OPTIMIST"
+						<a class="grey-text text-lighten-4 right weatherWidget__footer-copyright-link" href="http://optimist.biz.ua/" target="_blank" rel="nofollow noreferrer noopener">
+							optimist.biz.ua
+						</a>
+					</div>
+				</div>
+			</footer>
+
 		</div>
 	</div>
 </div>
-</div>
 
-<script src="Weather.e31bb0bc.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script src="/Weather.e31bb0bc.js"></script>
 
 </body>
 </html>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
