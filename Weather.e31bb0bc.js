@@ -3165,7 +3165,7 @@ var getDataParams = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            url = 'http://api.openweathermap.org/data/2.5/group';
+            url = '//api.openweathermap.org/data/2.5/group';
             _context.next = 3;
             return _axios.default.get(url, {
               params: {
@@ -3382,7 +3382,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56434" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -3559,4 +3559,3 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/Weather.e31bb0bc.js.map
