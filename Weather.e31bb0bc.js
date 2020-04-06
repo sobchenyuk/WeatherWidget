@@ -1271,8 +1271,8 @@ var generated = /*#__PURE__*/function () {
             _weather$ = weather[0], description = _weather$.description, icon = _weather$.icon;
             t.innerHTML = description.toUpperCase();
             i.src = "//openweathermap.org/img/wn/".concat(icon, "@2x.png");
-            temp.innerHTML = temperature;
-            feel.innerHTML = feels_like;
+            temp.innerHTML = Math.ceil(temperature);
+            feel.innerHTML = Math.ceil(feels_like);
             h.innerHTML = humidity;
 
           case 12:
@@ -3382,7 +3382,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56434" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49495" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
