@@ -1318,7 +1318,7 @@ var installationUpdateWeather = /*#__PURE__*/function () {
             _context2.next = 10;
             return generated(currentCityObg).then(function () {
               var cardTitle = document.querySelector('.card-title');
-              cardTitle.innerHTML = "\u041F\u043E\u0433\u043E\u0434\u0430 \u0432 ".concat(name);
+              cardTitle.innerHTML = "\u041F\u043E\u0433\u043E\u0434\u0430 ".concat(name);
             });
 
           case 10:
@@ -1486,7 +1486,11 @@ var ChangeCity = /*#__PURE__*/function () {
               case 5:
                 _yield$window$M$FormS = _context.sent;
                 select = _yield$window$M$FormS.el;
-                return _context.abrupt("return", select);
+                return _context.abrupt("return", new Promise(function (resolve, reject) {
+                  setTimeout(function () {
+                    return resolve(select);
+                  }, 100);
+                }));
 
               case 10:
                 _context.prev = 10;
@@ -1534,13 +1538,35 @@ var ChangeCity = /*#__PURE__*/function () {
     }
   }, {
     key: "init",
-    value: function init() {
-      var _this = this;
+    value: function () {
+      var _init = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+        var select;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.getMaterialSelect();
 
-      this.getMaterialSelect().then(function (res) {
-        res.addEventListener('change', _this.onChangeSelect);
-      });
-    }
+              case 2:
+                select = _context2.sent;
+                _context2.next = 5;
+                return select.addEventListener('change', this.onChangeSelect);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function init() {
+        return _init.apply(this, arguments);
+      }
+
+      return init;
+    }()
   }]);
   return ChangeCity;
 }();
@@ -3211,8 +3237,7 @@ var initRequestParams = /*#__PURE__*/function () {
               subarray[i] = arr.slice(i * size, i * size + size).join(',');
             }
 
-            _context2.next = 7;
-            return subarray.forEach(function (elem) {
+            subarray.forEach(function (elem) {
               getDataParams(elem).then(function (res) {
                 var _iterator = _createForOfIteratorHelper(res),
                     _step;
@@ -3229,11 +3254,13 @@ var initRequestParams = /*#__PURE__*/function () {
                 }
               });
             });
+            return _context2.abrupt("return", new Promise(function (resolve, reject) {
+              setTimeout(function () {
+                return resolve(arrayRequest);
+              }, 500);
+            }));
 
           case 7:
-            return _context2.abrupt("return", arrayRequest);
-
-          case 8:
           case "end":
             return _context2.stop();
         }
@@ -3248,34 +3275,39 @@ var initRequestParams = /*#__PURE__*/function () {
 
 var templateWeather = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+    var res;
     return _regenerator.default.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.prev = 0;
             _context3.next = 3;
-            return initRequestParams().then(function (res) {
-              setTimeout(function () {
-                localStorage.setItem('arrayRequest', JSON.stringify(res));
-                (0, _Utils.installationUpdateWeather)((0, _constant.getDefaultCity)(), res);
-              }, 500);
-            });
+            return initRequestParams();
 
           case 3:
+            res = _context3.sent;
+            _context3.next = 6;
+            return localStorage.setItem('arrayRequest', JSON.stringify(res));
+
+          case 6:
             _context3.next = 8;
+            return (0, _Utils.installationUpdateWeather)((0, _constant.getDefaultCity)(), res);
+
+          case 8:
+            _context3.next = 13;
             break;
 
-          case 5:
-            _context3.prev = 5;
+          case 10:
+            _context3.prev = 10;
             _context3.t0 = _context3["catch"](0);
             console.log(_context3.t0);
 
-          case 8:
+          case 13:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[0, 5]]);
+    }, _callee3, null, [[0, 10]]);
   }));
 
   return function templateWeather() {
@@ -3312,13 +3344,19 @@ var getTemplateWeather = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _TemplateWeather.templateWeather)().then(function () {
-              loader.classList.contains('fadein') && loader.classList.remove('fadein');
-              loader.style.display = 'none';
-              content.style.opacity = '1';
-            });
+            return (0, _TemplateWeather.templateWeather)();
 
           case 2:
+            return _context.abrupt("return", new Promise(function (resolve, reject) {
+              setTimeout(function () {
+                resolve('loads');
+                loader.classList.contains('fadein') && loader.classList.remove('fadein');
+                loader.style.display = 'none';
+                content.style.opacity = '1';
+              }, 100);
+            }));
+
+          case 3:
           case "end":
             return _context.stop();
         }
@@ -3382,7 +3420,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49495" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63879" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
